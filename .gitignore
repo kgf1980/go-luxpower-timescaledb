@@ -22,3 +22,5 @@ go.work
 
 # Binary builds
 bin/*
+.env
+export.sql

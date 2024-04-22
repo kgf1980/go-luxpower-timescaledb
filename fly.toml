@@ -1,0 +1,14 @@
+# fly.toml app configuration file generated for go-luxpower-timescaledb on 2024-04-22T11:21:14Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'go-luxpower-timescaledb'
+primary_region = 'lhr'
+
+[build]
+
+[[vm]]
+  memory = '256mb'
+  cpu_kind = 'shared'
+  cpus = 1
