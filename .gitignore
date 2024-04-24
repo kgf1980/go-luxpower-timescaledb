@@ -24,3 +24,6 @@ go.work
 bin/*
 .env
 export.sql
+export.csv
+inverter_data.csv
+luxpower.bak

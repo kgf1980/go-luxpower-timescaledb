@@ -187,27 +187,27 @@ func MigrateDb(conn *pgx.Conn) error {
 	if err != nil {
 		return err
 	}
-	row := conn.QueryRow(ctx, "SELECT COUNT(*) FROM timescaledb_information.hypertables WHERE hypertable_name = 'inverter_data'")
+	row := conn.QueryRow(ctx, "SELECT COUNT(*) FROM timescaledb_information.hypertables WHERE hypertable_name = 'inverter_data';")
 	var rowCount int
 	err = row.Scan(&rowCount)
 	if err != nil {
 		return err
 	}
 	if rowCount == 0 {
-		_, err := conn.Exec(ctx, "SELECT create_hypertable('inverter_data', by_range('time'))")
+		_, err := conn.Exec(ctx, "SELECT create_hypertable('inverter_data', by_range('time'));")
 		if err != nil {
 			return err
 		}
 	}
 
-	_, err = conn.Exec(ctx, `CREATE UNIQUE INDEX IF NOT EXISTS ix_inverter_time_station ON inverter_data (time, station_number)`)
+	_, err = conn.Exec(ctx, `CREATE UNIQUE INDEX IF NOT EXISTS ix_inverter_time_station ON inverter_data (time, station_number);`)
 	if err != nil {
 		return err
 	}
 
-	_, err = conn.Exec(ctx, `ALTER TABLE inverter_data ADD UNIQUE(time, station_number)`)
-	if err != nil {
-		return err
-	}
+	//_, err = conn.Exec(ctx, `ALTER TABLE inverter_data ADD UNIQUE(time, station_number);`)
+	//if err != nil {
+	//	return err
+	//}
 	return nil
 }
