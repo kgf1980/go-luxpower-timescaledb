@@ -3,7 +3,7 @@ module github.com/kgf1980/go-luxpower-timescaledb
 go 1.22.1
 
 require (
-	github.com/jackc/pgx/v5 v5.5.5
+	github.com/jackc/pgx/v5 v5.6.0
 	github.com/joho/godotenv v1.5.1
 	golang.org/x/net v0.25.0
 )
